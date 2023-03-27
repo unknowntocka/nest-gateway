@@ -1,4 +1,8 @@
-import { VersioningType, VERSION_NEUTRAL } from '@nestjs/common';
+import {
+  VersioningType,
+  VERSION_NEUTRAL,
+  ValidationPipe,
+} from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
@@ -23,6 +27,9 @@ async function bootstrap() {
     defaultVersion: [VERSION_NEUTRAL, '1', '2'],
     type: VersioningType.URI,
   });
+
+  // 启用全局字段校验
+  app.useGlobalPipes(new ValidationPipe());
 
   // 使用全局拦截器
   app.useGlobalInterceptors(new TransformInterceptor());
