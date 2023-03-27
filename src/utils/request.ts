@@ -22,9 +22,9 @@ const request = async ({ url, option = {} }) => {
 interface IMethodV {
   url: string;
   method?: Method;
-  headers: { [key: string]: string };
-  params: Record<string, unknown>;
-  query: Record<string, unknown>;
+  headers?: { [key: string]: string };
+  params?: Record<string, unknown>;
+  query?: Record<string, unknown>;
 }
 
 export interface IRequest {
