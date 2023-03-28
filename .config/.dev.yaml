@@ -9,8 +9,8 @@ MONGODB_CONFIG:
   name: 'fast_gateway_test'
   type: mongodb
   url: 'mongodb://localhost:27017'
-  username: ''
-  password: ''
+  username: 'admin'
+  password: 'password'
   database: 'fast_gateway_test'
   entities: 'mongo'
   logging: false
