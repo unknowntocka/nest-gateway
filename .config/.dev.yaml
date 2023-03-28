@@ -5,3 +5,13 @@ FEISHU_CONFIG:
   FEISHU_API_HOST: https://open.feishu.cn
   FEISHU_APP_ID: cli_a4abf72e4e3f900b
   FEISHU_APP_SECRET: zzUW3jkHDaYA1NhSS00gEeVYMGyLRAHs
+MONGODB_CONFIG:
+  name: 'fast_gateway_test'
+  type: mongodb
+  url: 'mongodb://localhost:27017'
+  username: ''
+  password: ''
+  database: 'fast_gateway_test'
+  entities: 'mongo'
+  logging: false
+  synchronize: true
