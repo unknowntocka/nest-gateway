@@ -22,6 +22,12 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
+  // 使用全局拦截器
+  app.useGlobalInterceptors(new TransformInterceptor());
+
+  // 处理错误
+  app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
+
   // 接口版本管理
   app.enableVersioning({
     defaultVersion: [VERSION_NEUTRAL, '1', '2'],
@@ -31,21 +37,15 @@ async function bootstrap() {
   // 启用全局字段校验
   app.useGlobalPipes(new ValidationPipe());
 
-  // 使用全局拦截器
-  app.useGlobalInterceptors(new TransformInterceptor());
-
-  // 处理错误
-  app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
-
   // 创建文档
   generateDocument(app);
-
-  await app.listen(3000);
 
   // hmr
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close);
   }
+
+  await app.listen(3000);
 }
 bootstrap();

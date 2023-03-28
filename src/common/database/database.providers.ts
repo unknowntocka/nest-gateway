@@ -1,6 +1,6 @@
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { getConfig } from '@/utils';
 import * as path from 'path';
-import { DataSource, DataSourceOptions } from 'typeorm';
 
 // 设置数据库类型
 const databaseType: DataSourceOptions['type'] = 'mongodb';
@@ -24,6 +24,7 @@ export const DatabaseProviders = [
   {
     provide: 'MONGODB_DATA_SOURCE',
     useFactory: async () => {
+      console.log(MONGODB_DATA_SOURCE);
       await MONGODB_DATA_SOURCE.initialize();
       return MONGODB_DATA_SOURCE;
     },
