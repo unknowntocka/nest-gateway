@@ -16,6 +16,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     request.log.error(exception);
 
+    console.log(exception);
+
     // 非 HTTP 标准异常的处理
     response.status(HttpStatus.SERVICE_UNAVAILABLE).send({
       statusCode: HttpStatus.SERVICE_UNAVAILABLE,

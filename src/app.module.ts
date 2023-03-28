@@ -1,17 +1,28 @@
 import { CacheModule, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TYPEORM_CONFIG } from './common/constant';
 import { UserModule } from './user/user.module';
 import { getConfig } from './utils';
+import databaseConfig from './common/database/database.config';
 
 @Module({
   imports: [
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        const a = config.get<TypeOrmModuleOptions>(TYPEORM_CONFIG);
+        console.log(a);
+        return a;
+      },
+    }),
     CacheModule.register({
       isGlobal: true,
     }),
     ConfigModule.forRoot({
       ignoreEnvFile: true,
       isGlobal: true,
-      load: [getConfig],
+      load: [getConfig, databaseConfig],
     }),
     UserModule,
   ],
