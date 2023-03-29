@@ -5,13 +5,13 @@ FEISHU_CONFIG:
   FEISHU_API_HOST: https://open.feishu.cn
   FEISHU_APP_ID: cli_a4abf72e4e3f900b
   FEISHU_APP_SECRET: zzUW3jkHDaYA1NhSS00gEeVYMGyLRAHs
-MYSQL_CONFIG:
+MONGODB_CONFIG:
   name: 'fast_gateway_test'
-  port: 3306
-  host: 'localhost'
-  username: 'user'
-  password: 'pass'
+  type: mongodb
+  url: 'mongodb://localhost:27017'
+  username: 'admin'
+  password: 'password'
   database: 'fast_gateway_test'
-  entities: 'mysql'
+  entities: 'mongo'
   logging: false
   synchronize: true
