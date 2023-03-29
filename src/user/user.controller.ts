@@ -1,4 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  Version,
+  VERSION_NEUTRAL,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AddUserDto } from './user.dto';
 import { UserService } from './user.service';
@@ -12,6 +18,7 @@ export class UserController {
     summary: '新增用户',
   })
   @Post('/add')
+  @Version([VERSION_NEUTRAL])
   create(@Body() user: AddUserDto) {
     return this.userService.createOnSave(user);
   }
