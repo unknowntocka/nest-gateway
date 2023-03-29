@@ -1,15 +1,15 @@
+import { DatabaseModule } from '@/common/database/database.module';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { FeishuController } from './feishu/feishu.controller';
 import { FeishuService } from './feishu/feishu.service';
 import { UserController } from './user.controller';
-import { User } from './user.mysql.entity';
+import { UserProviders } from './user.providers';
 import { UserService } from './user.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [DatabaseModule],
   controllers: [FeishuController, UserController],
-  providers: [UserService, FeishuService],
+  providers: [...UserProviders, UserService, FeishuService],
   exports: [UserService],
 })
 export class UserModule {}
