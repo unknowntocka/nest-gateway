@@ -2,6 +2,7 @@ import { getConfig } from '@/utils';
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DatabaseType } from 'typeorm';
+import entities from './entities';
 
 const { MYSQL_CONFIG } = getConfig();
 
@@ -11,7 +12,8 @@ const getTypeOrmConfig = (): TypeOrmModuleOptions => {
   return {
     ...MYSQL_CONFIG,
     type: databaseType,
-    entities: ['src/**/*entity.ts'],
+    entities: entities,
+    autoLoadEntities: true,
   };
 };
 
