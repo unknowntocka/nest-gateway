@@ -10,11 +10,8 @@ import databaseConfig from './common/database/database.config';
   imports: [
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        const a = config.get<TypeOrmModuleOptions>(TYPEORM_CONFIG);
-        console.log(a);
-        return a;
-      },
+      useFactory: (config: ConfigService) =>
+        config.get<TypeOrmModuleOptions>(TYPEORM_CONFIG),
     }),
     CacheModule.register({
       isGlobal: true,

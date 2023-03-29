@@ -7,11 +7,10 @@ FEISHU_CONFIG:
   FEISHU_APP_SECRET: zzUW3jkHDaYA1NhSS00gEeVYMGyLRAHs
 MYSQL_CONFIG:
   name: 'fast_gateway_test'
-  type: mysql
   port: 3306
   host: 'localhost'
-  username: 'root'
-  password: 'jiacheng'
+  username: 'user'
+  password: 'pass'
   database: 'fast_gateway_test'
   entities: 'mysql'
   logging: false

@@ -1,1 +1,1 @@
-export const TYPEORM_CONFIG = 'database.confg';
+export const TYPEORM_CONFIG = 'database.config';

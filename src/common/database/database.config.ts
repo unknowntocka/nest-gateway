@@ -1,14 +1,17 @@
 import { getConfig } from '@/utils';
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { join } from 'path';
+import { DatabaseType } from 'typeorm';
 
 const { MYSQL_CONFIG } = getConfig();
+
+const databaseType: DatabaseType = 'mysql';
 
 const getTypeOrmConfig = (): TypeOrmModuleOptions => {
   return {
     ...MYSQL_CONFIG,
-    entities: [join(__dirname, `../../**/*.${MYSQL_CONFIG.entities}{.ts,.js}`)],
+    type: databaseType,
+    entities: ['src/**/*entity.ts'],
   };
 };
 
